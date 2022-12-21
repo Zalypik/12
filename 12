@@ -1,0 +1,1755 @@
+1. 	В заданном массиве A(N) найти произведение наибольшего и наименьшего элементов.
+ 
+
+procedure TForm1.Button1Click(Sender: TObject);
+var a:array [1..10] of integer;
+  min,max,i:integer;
+begin
+Memo1.Lines.Clear ;
+i:=1;
+
+repeat
+a[i]:=random(100);  // (100) тут задается максимум в рандоме
+Memo1.Lines.Add(FloatToStr(a[i]));
+if i=1 then
+  begin
+         max := a[i];
+         min:=a[i];
+         i:=i+1;
+         continue;  //закончит текущий повтор цикла
+  end;
+if a[i]>max then
+  begin
+         Max := a[i] ;
+  end;
+if a[i]<min then
+  begin
+         min := a[i] ;
+  end;
+i:=i+1;
+until i>10 ;
+
+Label1.caption:= 'max='+floattostr(max);
+Label2.caption:= 'min='+floattostr(min) ;
+Label3.caption:= 'milt='+floattostr(max*min)
+end;   
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random  random= new Random();
+            int[] MyArray = new int[10];
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i]= random.Next(10);
+                Console.WriteLine($"{i+1} элемент массива: {MyArray[i]}");
+            }
+
+            Console.WriteLine($"\nПроизведение min & max = {MyArray.Max()*MyArray.Min()}");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. 	В заданном массиве A(N) найти сумму наибольшего и наименьшего элементов.
+ 
+
+procedure TForm1.Button1Click(Sender: TObject);
+var a:array [1..10] of integer;
+  min,max,i:integer;
+begin
+Memo1.Lines.Clear ;
+i:=1;
+
+repeat
+a[i]:=random(100);  // (100) тут задается максимум в рандоме
+Memo1.Lines.Add(FloatToStr(a[i]));
+if i=1 then
+  begin
+         max := a[i];
+         min:=a[i];
+         i:=i+1;
+         continue;  //закончит текущий повтор цикла
+  end;
+if a[i]>max then
+  begin
+         Max := a[i] ;
+  end;
+if a[i]<min then
+  begin
+         min := a[i] ;
+  end;
+i:=i+1;
+until i>10 ;
+
+Label1.caption:= 'max='+floattostr(max);
+Label2.caption:= 'min='+floattostr(min) ;
+Label3.caption:= 'sum='+floattostr(max+min)
+
+end;              
+
+static void Main(string[] args)
+        {
+            Random  random= new Random();
+            int[] MyArray = new int[10];
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i]= random.Next(10);
+                Console.WriteLine($"{i+1} элемент массива: {MyArray[i]}");
+            }
+
+            Console.WriteLine($"\nСумма min & max = {MyArray.Max()+MyArray.Min()}");
+        }
+
+
+
+
+
+
+
+3. 	В заданном массиве A(N) поменяйте местами наибольший и наименьший элементы
+ 
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  a:array [1..10] of integer;
+  max, min, IndMin, IndMax, i:integer;
+begin
+Memo1.Lines.Clear ; //очистка мемо
+Memo2.Lines.Clear  ;
+
+for i:=1 to 10 do
+    begin
+
+a[i]:=random(100); // (100) тут задается максимум в рандоме
+Memo1.Lines.Add(FloatToStr(a[i]));
+
+if i=1 then
+  begin
+    max:=a[i];
+    min:=a[i];
+    IndMax:=i;
+    IndMin:=i;
+    continue;  //закончит текущий повтор цикла
+  end;
+
+if a[i]>max then
+  begin
+    max:=a[i];
+    indMax:=i;
+  end;
+
+if a[i]<min then
+ begin
+  min:=a[i];
+  IndMin:=i;
+ end;
+
+end;
+
+a[IndMax]:= min;
+a[IndMin]:= max;
+Label1.caption:= 'max='+floattostr(max);
+Label2.caption:= 'min='+floattostr(min) ;
+
+for i:=1 to 10 do
+ begin
+   Memo2.Lines.Add(FloatToStr(a[i]));
+ end;
+
+end;      
+
+
+static void Main(string[] args)
+        {
+            Random  random= new Random();
+            int[] MyArray = new int[10];
+
+            Console.WriteLine("\t 1 массив");
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i]= random.Next(100);
+                Console.WriteLine($"{i+1} элемент массива: {MyArray[i]}");
+            }
+            Console.WriteLine("\n");
+
+            int maxInd = Array.IndexOf(MyArray, MyArray.Max()); 
+            int minInd = Array.IndexOf(MyArray, MyArray.Min());
+
+            int max = MyArray.Max();
+            int min = MyArray.Min();
+
+            Console.WriteLine($"Min[{minInd + 1}]:{MyArray.Min()} Max[{maxInd + 1}]:{MyArray.Max()}");
+
+            MyArray[maxInd] = min;
+            MyArray[minInd] = max;
+
+            Console.WriteLine("\n\t 2 массив");
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                Console.WriteLine($"{i + 1} элемент массива: {MyArray[i]}");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. 	Выведите на печать номера элементов заданного массива Y(N), удовлетворяющих условию 0<Y[i]<1
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  a:array [1..10] of real;
+   i:integer;
+begin
+Memo1.Lines.Clear ; // очистка мемо
+Memo2.Lines.Clear  ;
+
+for i:=1 to 10 do
+    begin
+
+a[i]:=random*10; // создает рандомные числа в диапазоне 0-1
+Memo1.Lines.Add(FloatToStrF(a[i],ffFixed,0,2));// делает 2 знака после ,
+end;
+
+
+for i:=1 to 10 do
+ begin
+
+   if (0<a[i]) and (a[i]<1) then  
+   Memo2.Lines.Add('элемент: '+FloatToStr(i))
+
+ end;
+end;     
+
+
+
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            float[] MyArray = new float[10];
+
+            Console.WriteLine("Массив:");
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = (float) Math.Round(random.NextDouble() * 10 , 2);
+                Console.Write(MyArray[i]+"\t");
+            }
+
+            Console.WriteLine("\nЭлементы удовлетворяющие условие:");
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                if (0 < MyArray[i] && MyArray[i] < 1)
+                {
+                    Console.WriteLine($"{i+1} элемент ");
+                }
+            }
+            Console.WriteLine();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5. 	Дан массив A(N). Получите массив B(N), i-й элемент которого равен среднему арифметическому первых i элементов массива.
+ internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArrayOld = new int[5];
+            float[] MyArrayNew = new float[6];
+            float SredAr = 0;
+
+            Console.WriteLine("\t1 Массив\n");
+            for (int i = 0; i < MyArrayOld.GetLength(0); i++)
+            {
+                MyArrayOld[i] = random.Next(3);
+                Console.Write(MyArrayOld[i] + "\t");
+                SredAr += MyArrayOld[i];
+            }
+            SredAr /= MyArrayOld.GetLength(0);
+            Console.WriteLine($"\n\nCреднеe арифметическоe: {SredAr}\n");
+
+            int j = 0;
+            Console.WriteLine("\t2 Массив\n");
+            for (int i = 0; i < MyArrayNew.Length; i++)
+            {
+                if (i==0)
+                {
+                    MyArrayNew[i]= SredAr;
+                    Console.Write(MyArrayNew[i] + "\t");
+                    continue;
+                }
+
+                MyArrayNew[i]= MyArrayOld[j];
+                Console.Write(MyArrayNew[i] + "\t");
+                j++;
+            }
+
+        }
+
+6. 	Дан целочисленный массив А размера N. Вывести  сумму положительных элементов заданного массива A(N).
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  a:array [1..10]of integer;
+   sum,i:integer;
+begin
+Memo1.Lines.Clear ; // очистка мемо
+sum:=0;
+a[1]:=1        ;
+a[2]:=12       ;
+a[3]:=2        ;
+a[4]:=20       ;
+a[5]:=-75      ;
+a[6]:=-56      ;
+a[7]:=-45      ;
+a[8]:=35       ;
+a[9]:=-45      ;
+a[10]:=-542    ;
+
+for i:=1 to 10 do
+    begin
+Memo1.Lines.Add(FloatToStr(a[i]));
+if a[i]>=0 then
+   begin
+   sum:= a[i]+sum ;
+   end;
+end;
+Label1.Caption:= 'sum='+ floattostr(sum);
+end;         
+
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10];
+            int sum = 0;
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(-5, 5);
+                Console.Write(MyArray[i]+"\t");
+                if (MyArray[i]>0)
+                {
+                    sum += MyArray[i];
+                }
+            }
+
+            Console.WriteLine($"\nСумма Положительных элементов = {sum}");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7. 	Дан целочисленный массив А размера N. Вывести сумму отрицательных элементов заданного массива A(N).
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  a:array [1..10]of integer;
+   sum,i:integer;
+begin
+Memo1.Lines.Clear ; // очистка мемо
+sum:=0;
+a[1]:=1        ;
+a[2]:= 12       ;
+a[3]:=  2         ;
+a[4]:=  20         ;
+a[5]:=  -75         ;
+a[6]:=  -55          ;
+a[7]:=  -45           ;
+a[8]:=    35           ;
+a[9]:=    -45           ;
+a[10]:=  -11            ;
+
+for i:=1 to 10 do
+    begin
+Memo1.Lines.Add(FloatToStr(a[i]));
+if a[i]<=0 then
+   begin
+   sum:= a[i]+sum ;
+   end;
+end;
+Label1.Caption:= 'sum='+ floattostr(sum);
+end;        
+
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10];
+            int sum = 0;
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(-5, 5);
+                Console.Write(MyArray[i]+"\t");
+                if (MyArray[i]<0)
+                {
+                    sum += MyArray[i];
+                }
+            }
+
+            Console.WriteLine($"\nСумма отрицательных элементов = {sum}");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+8. 	Дан целочисленный массив А размера N. Вывести число отрицательных элементов заданного массива A(N). 
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  a:array [1..10]of integer;
+   numberNeg,i:integer;
+begin
+Memo1.Lines.Clear ; // очистка мемо
+numberNeg:=0;
+a[1]:=1        ;
+a[2]:= 12       ;
+a[3]:=  2         ;
+a[4]:=  20         ;
+a[5]:=  -75         ;
+a[6]:=  -55          ;
+a[7]:=  -45           ;
+a[8]:=    35           ;
+a[9]:=    -45           ;
+a[10]:=  -11            ;
+
+for i:=1 to 10 do
+    begin
+Memo1.Lines.Add(FloatToStr(a[i]));
+if a[i]<=0 then
+   begin
+   numberNeg:= numberNeg+1 ;
+   end;
+end;
+Label1.Caption:= 'количество отрицательных ='+ floattostr(numberNeg);
+end;    
+
+
+
+static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10];
+            int value = 0;
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(-5, 5);
+                Console.Write(MyArray[i]+"\t");
+                if (MyArray[i]<0)
+                {
+                    value++;
+                }
+            }
+
+            Console.WriteLine($"\nКоличество Эллементов 0 < : {value}");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9. 	Дан целочисленный массив А размера N. Вывести число положительных элементов заданного массива A(N).
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  a:array [1..10]of integer;
+   numberPos,i:integer;
+begin
+Memo1.Lines.Clear ; // очистка мемо
+numberPos:=0;
+a[1]:=1        ;
+a[2]:= 12       ;
+a[3]:=  2         ;
+a[4]:=  20         ;
+a[5]:=  -75         ;
+a[6]:=  -55          ;
+a[7]:=  -45           ;
+a[8]:=    35           ;
+a[9]:=    -45           ;
+a[10]:=  -11            ;
+
+for i:=1 to 10 do
+    begin
+Memo1.Lines.Add(FloatToStr(a[i]));
+if a[i]>=0 then
+   begin
+   numberPos:= numberPos+1 ;
+   end;
+end;
+Label1.Caption:= 'Количество положительных='+ floattostr(numberPos);
+end;   
+
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10];
+            int value = 0;
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(-5, 5);
+                Console.Write(MyArray[i]+"\t");
+                if (MyArray[i]>0)
+                {
+                    value++;
+                }
+            }
+
+            Console.WriteLine($"\nКоличество Эллементов 0 > : {value}");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+10. Дан целочисленный массив А размера N. Найти количество элементов массива А, удовлетворяющих условию с<=a[i].
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  a:array [1..10]of integer;
+   numSuittable,c,i:integer;
+begin
+Memo1.Lines.Clear ; // очистка мемо
+c:=25; //c - любое число ,я возьму его как 25
+numSuittable:=0;// подходящие нам числа под условие
+for i:=1 to 10 do
+ begin
+
+  a[i]:=random(100);
+  Memo1.Lines.Add(FloatToStr(a[i]));
+   if c<=a[i] then
+      begin
+        numSuittable:= numSuittable+1;
+      end;
+ end;
+Label1.caption:= floattostr(numSuittable) + ' чисел больше чем C';
+end;      
+
+
+
+
+
+
+
+
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10];
+            Console.Write("Введите число С:");
+            float c = float.Parse(Console.ReadLine());
+            int condition = 0;
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(0, 50);
+                Console.Write(MyArray[i]+"\t");
+                if (MyArray[i]>=c)
+                {
+                    condition++;
+                }
+            }
+
+            Console.WriteLine($"\n\n{condition} болше число С");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+11. Дан целочисленный массив А размера N. Найти количество элементов массива А, удовлетворяющих условию с>a[i].
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  a:array [1..10]of integer;
+   numSuittable,c,i:integer;
+begin
+Memo1.Lines.Clear ; // очистка мемо
+c:=25; //c - любое число ,я возьму его как 25
+numSuittable:=0;// подходящие нам числа под условие
+for i:=1 to 10 do
+ begin
+
+  a[i]:=random(100);
+  Memo1.Lines.Add(FloatToStr(a[i]));
+   if c>=a[i] then
+      begin
+        numSuittable:= numSuittable+1;
+      end;
+ end;
+Label1.caption:= floattostr(numSuittable) + ' чисел меньше чем C';
+end; 
+
+
+
+
+
+
+
+
+
+
+
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10];
+            Console.Write("Введите число С:");
+            float c = float.Parse(Console.ReadLine());
+            int condition = 0;
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(0, 50);
+                Console.Write(MyArray[i]+"\t");
+                if (MyArray[i]<c)
+                {
+                    condition++;
+                }
+            }
+
+            Console.WriteLine($"\n\n{condition} меньше С");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+12. Дан целочисленный массив А размера N. Найти максимальный элемент массива.
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+var a:array [1..10] of integer;
+  max,i:integer;
+begin
+i:=1;
+Memo1.Lines.Clear ; // очистка мемо
+
+repeat
+a[i]:=random(100);  // (100) тут задается максимум в рандоме
+Memo1.Lines.Add(FloatToStr(a[i]));
+
+if i=1 then
+  begin
+         max := a[i];
+         i:=i+1;
+         continue;  //закончит текущий повтор цикла
+
+  end;
+if a[i]>max then
+  begin
+         max := a[i] ;
+  end;
+
+i:=i+1;
+until i>10 ;
+
+Label1.caption:= 'max='+floattostr(max);
+end;             
+          
+
+
+
+static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10]; 
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(0, 50);
+                Console.Write(MyArray[i]+"\t");
+            }
+
+            Console.WriteLine($"\n\n{MyArray.Max()}: самое большое число в массиве");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+13. Дан целочисленный массив А размера N. Найти минимальный элемент массива.
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+var a:array [1..10] of integer;
+  min,i:integer;
+begin
+i:=1;
+Memo1.Lines.Clear ; // очистка мемо
+
+repeat
+a[i]:=random(100);  // (100) тут задается максимум в рандоме
+Memo1.Lines.Add(FloatToStr(a[i]));
+
+if i=1 then
+  begin
+         min := a[i];
+         i:=i+1;
+         continue;  //закончит текущий повтор цикла
+
+  end;
+if a[i]<min then
+  begin
+         min := a[i] ;
+  end;
+
+i:=i+1;
+until i>10 ;
+
+Label1.caption:= 'min='+floattostr(min);
+end;        
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10]; 
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(0, 50);
+                Console.Write(MyArray[i]+"\t");
+            }
+
+            Console.WriteLine($"\n\n{MyArray.Min()}: самое маленькое число в массиве");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+14. Дан целочисленный массив А размера N. Найти номер максимального элемента массива.
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+var a:array [1..10] of integer;
+  IndexMax,max,i:integer;
+begin
+i:=1;
+Memo1.Lines.Clear ; // очистка мемо
+
+repeat
+a[i]:=random(100);
+Memo1.Lines.Add(FloatToStr(a[i]));
+
+if i=1 then
+  begin
+         max := a[i];
+         IndexMax := i;
+         i:=i+1;
+         continue;
+  end;
+if a[i]>max then
+  begin
+         max := a[i] ;
+         IndexMax := i;
+  end;
+
+i:=i+1;
+until i>10 ;
+
+Label1.caption:= 'IndexMax='+floattostr(IndexMax);
+end;   
+       
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10]; 
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(0, 10);
+                Console.Write(MyArray[i]+"\t");
+            }
+
+            int maxInd = Array.IndexOf(MyArray, MyArray.Max());
+            Console.WriteLine($"\n\nЧисло под индексом {maxInd+1} масое большое= {MyArray.Max()}");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+15. Дан целочисленный массив А размера N. Найти номер минимального элемента массива.
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+var a:array [1..10] of integer;
+  IndexMin,min,i:integer;
+begin
+i:=1;
+Memo1.Lines.Clear ; // очистка мемо
+
+repeat
+a[i]:=random(100);
+Memo1.Lines.Add(FloatToStr(a[i]));
+
+if i=1 then
+  begin
+         min := a[i];
+         IndexMin := i;
+         i:=i+1;
+         continue;
+  end;
+if a[i]<min then
+  begin
+         min := a[i] ;
+         IndexMin := i;
+  end;
+
+i:=i+1;
+until i>10 ;
+
+Label1.caption:= 'IndexMin='+floattostr(IndexMin);
+end;    
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10]; 
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(0, 10);
+                Console.Write(MyArray[i]+"\t");
+            }
+
+            int minInd = Array.IndexOf(MyArray, MyArray.Min());
+            Console.WriteLine($"\n\nЧисло под индексом {minInd+1} масое маленькое= {MyArray.Min()}");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+16. Дан целочисленный массив А размера N. Найти произведение элементов массива А, удовлетворяющих условию с<=А[i].
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+const
+  c: integer= 1;
+var a:array [1..10] of integer;
+  result,i:integer;
+begin
+result :=0;
+i:=1;
+Memo1.Lines.Clear ; // очистка мемо
+
+repeat
+a[i]:=random(3);
+Memo1.Lines.Add(FloatToStr(a[i]));
+
+if c <= a[i] then
+  begin
+          if result = 0 then 
+            begin
+                result:= a[i]  ;
+            end;
+  result:=result*a[i] ;
+  end;
+
+i:=i+1;
+until i>10 ;
+
+Label1.caption:= 'с<=А[i]='+floattostr(result);
+end;                 
+
+
+
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10];
+            Console.Write("Введите число С:");
+            int c = int.Parse(Console.ReadLine());
+            int result = 1;
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(0, 10);
+                Console.Write(MyArray[i]+"\t");
+                if (MyArray[i]>=c)
+                {
+                    result *= MyArray[i];
+                }
+            }
+            Console.WriteLine($"\n\nПроизведение всех чисел которые > | =  С Равно:{result}");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+17. Дан целочисленный массив А размера N. Найти произведение элементов массива А, удовлетворяющих условию с>a[i].
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+const
+  c: integer= 3;
+var a:array [1..10] of integer;
+  result,i:integer;
+begin
+result :=0;
+i:=1;
+Memo1.Lines.Clear ; // очистка мемо
+
+repeat
+a[i]:=random(4);
+Memo1.Lines.Add(FloatToStr(a[i]));
+
+if c > a[i] then
+  begin
+          if result = 0 then
+            begin
+                result:= a[i]  ;
+            end;
+  result:=result*a[i] ;
+  end;
+
+i:=i+1;
+until i>10 ;
+
+Label1.caption:= 'с>А[i]='+floattostr(result);
+end;           
+
+
+
+
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10];
+            Console.Write("Введите число С:");
+            int c = int.Parse(Console.ReadLine());
+            int result = 1;
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(1, 10);
+                Console.Write(MyArray[i]+"\t");
+                if (MyArray[i]<c)
+                {
+                    result *= MyArray[i];
+                }
+            }
+            Console.WriteLine($"\n\nПроизведение всех чисел которые < С Равно:{result}");
+        }
+    }
+
+
+
+
+
+
+
+
+
+18. Дан целочисленный массив А размера N. Найти сколько элементов массива А удовлетворяют условию: a[i]<=d
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+const
+  b: integer= 50;
+var a:array [1..10] of integer;
+  index,i:integer;
+begin
+index :=0;
+i:=1;
+Memo1.Lines.Clear ; // очистка мемо
+
+repeat
+a[i]:=random(100);
+Memo1.Lines.Add(FloatToStr(a[i]));
+
+if a[i]<=b then
+  begin
+        index :=index+1;
+  end;
+
+i:=i+1;
+until i>10 ;
+
+Label1.caption:= 'a[i]<=b = удовлетворяет:'+floattostr(index);
+end;       
+
+
+
+
+
+
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10];
+            Console.Write("Введите число d:");
+            int d = int.Parse(Console.ReadLine());
+            int result = 0;
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(1, 10);
+                Console.Write(MyArray[i]+"\t");
+                if (MyArray[i]<=d)
+                {
+                    result++;
+                }
+            }
+            Console.WriteLine($"\n\n{result} элементов удовлетворяет условиею a[i]<=d");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+19. Дан целочисленный массив А размера N. Найти сумму элементов массива А, удовлетворяющих условию с<=a[i].
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+const
+  c: integer= 2;
+var a:array [1..10] of integer;
+  result,i:integer;
+begin
+result :=0;
+i:=1;
+Memo1.Lines.Clear ; // очистка мемо
+
+repeat
+a[i]:=random(5);
+Memo1.Lines.Add(FloatToStr(a[i]));
+
+if c <= a[i] then
+  begin
+  result:=result+a[i] ;
+  end;
+
+i:=i+1;
+until i>10 ;
+
+Label1.caption:= 'с<=А[i]   sum='+floattostr(result);
+end;     
+
+
+
+
+
+
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10];
+            Console.Write("Введите число с:");
+            int с = int.Parse(Console.ReadLine());
+            int result = 0;
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(0, 10);
+                Console.Write(MyArray[i]+"\t");
+                if (MyArray[i]<=с)
+                {
+                    result+= MyArray[i];
+                }
+            }
+            Console.WriteLine($"\n\nСумма элементов удовлетворяет условиею a[i]>=с = {result}");
+        }
+    }
+
+
+
+
+
+
+
+20. Дан целочисленный массив А размера N. Найти сумму элементов массива А, удовлетворяющих условию с>a[i].
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+const
+  c: integer= 3;
+var a:array [1..10] of integer;
+  result,i:integer;
+begin
+result :=0;
+i:=1;
+Memo1.Lines.Clear ; // очистка мемо
+
+repeat
+a[i]:=random(5);
+Memo1.Lines.Add(FloatToStr(a[i]));
+
+if c > a[i] then
+  begin
+  result:=result+a[i] ;
+  end;
+
+i:=i+1;
+until i>10 ;
+
+Label1.caption:= 'с>А[i]  sum='+floattostr(result);
+end;        
+\
+
+
+
+
+
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10];
+            Console.Write("Введите число с:");
+            int с = int.Parse(Console.ReadLine());
+            int result = 0;
+
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(0, 10);
+                Console.Write(MyArray[i]+"\t");
+                if (MyArray[i]<с)
+                {
+                    result+= MyArray[i];
+                }
+            }
+            Console.WriteLine($"\n\nСумма элементов удовлетворяет условиею a[i]<с = {result}");
+        }
+    }
+
+
+
+
+
+
+21. Дано число с – целое и массив целых чисел А из 10 элементов. В заданном массиве все элементы со значением с сделать равными 0.
+ 
+procedure TForm1.Button1Click(Sender: TObject);
+const
+  c: integer= 2;
+var a:array [1..10] of integer;
+  result,i:integer;
+begin
+result :=0;
+i:=1;
+Memo1.Lines.Clear ; // очистка мемо
+Memo2.Lines.Clear ;
+
+repeat
+a[i]:=random(7);
+Memo1.Lines.Add(FloatToStr(a[i]));
+
+if c = a[i] then
+  begin
+  a[i]:=0;
+  end;
+Memo2.Lines.Add(FloatToStr(a[i]));
+i:=i+1;
+until i>10 ;
+
+Label1.caption:= 'с=2'; 
+end;           
+
+
+
+
+
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            int[] MyArray = new int[10];
+
+            Console.WriteLine("1 Массив");
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                MyArray[i] = random.Next(0, 10);
+                Console.Write(MyArray[i] + "\t");
+            }
+
+            Console.Write("\n\nВведите число с:");
+            int с = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("\n2 Массив");
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                if (MyArray[i]==с)
+                {
+                    MyArray[i] = 0;
+                }
+                Console.Write(MyArray[i] + "\t");
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+22. Задана квадратная матрица А размером NxN (N<=10), состоящая из вещественных чисел. Найти среднее арифметическое элементов каждой из строк этой матрицы.
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random(); 
+
+            float[,] MyArray = new float[5 ,5];
+
+            for (int i = 0; i < MyArray.GetLength(0); i++)
+            {
+                for (int j = 0; j < MyArray.GetLength(1); j++)
+                {
+                    MyArray[i, j] = (float)random.Next(-1000,1000)/10;
+                    Console.Write($"{MyArray[i, j]} \t");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\n\n\n");
+            float SredAr=0;
+
+            for (int i = 0; i < MyArray.GetLength(0); i++)
+            {
+                for (int j = 0; j < MyArray.GetLength(1); j++)
+                {
+                    SredAr += MyArray[i, j];
+                }
+                Console.WriteLine($"{i+1} строка: "+ Math.Round((float)SredAr/MyArray.GetLength(1), 2));
+                SredAr = 0;
+            }
+        }
+    }
+
+23. Задана квадратная матрица А размером NxN (N<=10), состоящая из вещественных чисел. Найти среднее арифметическое элементов каждого из столбцов этой матрицы
+internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random(); 
+
+            float[,] MyArray = new float[5 ,5];
+
+            for (int i = 0; i < MyArray.GetLength(0); i++)
+            {
+                for (int j = 0; j < MyArray.GetLength(1); j++)
+                {
+                    MyArray[i, j] = (float)random.Next(-1000,1000)/10;
+                    Console.Write($"{MyArray[i, j]} \t");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\n\n\n");
+            float SredAr=0;
+
+            for (int i = 0; i < MyArray.GetLength(1); i++)
+            {
+                for (int j = 0; j < MyArray.GetLength(0); j++)
+                {
+                    SredAr += MyArray[j, i];
+                }
+                Console.WriteLine($"{i+1} колонка: "+ Math.Round((float)SredAr/MyArray.GetLength(0), 2));
+                SredAr = 0;
+            }
+        }
+    }
+
+24. Задана квадратная матрица А размером NxN (N<=10), состоящая из вещественных чисел. Найти сумму каждого из столбцов этой матрицы.
+static void Main(string[] args)
+        {
+            Random random = new Random();
+
+            float[,] MyArray = new float[5, 5];
+
+            for (int i = 0; i < MyArray.GetLength(0); i++)
+            {
+                for (int j = 0; j < MyArray.GetLength(1); j++)
+                {
+                    MyArray[i, j] = (float)random.Next(-1000, 1000) / 10;
+                    Console.Write($"{MyArray[i, j]} \t");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\n\n\n");
+            float result = 0;
+
+            for (int i = 0; i < MyArray.GetLength(1); i++)
+            {
+                for (int j = 0; j < MyArray.GetLength(0); j++)
+                {
+                    result += MyArray[j, i];
+                }
+                Console.WriteLine($"{i + 1} колонка: {Math.Round(result, 1)}");
+                result = 0;
+            }
+        }
+
+
+
+
+
+
+25. Задана квадратная матрица А размером NxN (N<=10), состоящая из вещественных чисел. Найти произведение каждого из столбцов этой матрицы
+static void Main(string[] args)
+        {
+            Random random = new Random();
+
+            float[,] MyArray = new float[5, 5];
+
+            for (int i = 0; i < MyArray.GetLength(0); i++)
+            {
+                for (int j = 0; j < MyArray.GetLength(1); j++)
+                {
+                    MyArray[i, j] = (float)random.Next(-100, 100) / 10;
+                    Console.Write($"{MyArray[i, j]} \t");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\n\n\n");
+            float result=1;
+
+            for (int i = 0; i < MyArray.GetLength(1); i++)
+            {
+                for (int j = 0; j < MyArray.GetLength(0); j++)
+                {
+                    result *= MyArray[j, i];
+                }
+                Console.WriteLine($"{i + 1} колонка: {Math.Round(result,2)}");
+                result = 1;
+            }
+        }
+
+
+
+
+
+
+
+26. Задана квадратная матрица А размером NxN (N<=10), состоящая из вещественных чисел. Найти произведение каждой строки этой матрицы.
+static void Main(string[] args)
+            {
+                Random random = new Random();
+
+                float[,] MyArray = new float[5, 5];
+
+                for (int i = 0; i < MyArray.GetLength(0); i++)
+                {
+                    for (int j = 0; j < MyArray.GetLength(1); j++)
+                    {
+                        MyArray[i, j] = (float)random.Next(100) / 10;
+                        Console.Write($"{MyArray[i, j]} \t");
+                    }
+                    Console.WriteLine();
+                }
+
+                Console.WriteLine("\n\n\n");
+                float result = 1;
+
+                for (int i = 0; i < MyArray.GetLength(0); i++)
+                {
+                    for (int j = 0; j < MyArray.GetLength(1); j++)
+                    {
+                        result *= MyArray[i, j];
+                    }
+                    Console.WriteLine($"{i + 1} строка: " + Math.Round((float)result,2));
+                    result = 1;
+                }
+            }
+
+
+
+
+
+
+
+
+
+27. Задана квадратная матрица А размером NxN (N<=10), состоящая из вещественных чисел. Найти сумму каждой строки этой матрицы.
+static void Main(string[] args)
+            {
+                Random random = new Random();
+
+                float[,] MyArray = new float[5, 5];
+
+                for (int i = 0; i < MyArray.GetLength(0); i++)
+                {
+                    for (int j = 0; j < MyArray.GetLength(1); j++)
+                    {
+                        MyArray[i, j] = (float)random.Next(-1000,1000) / 10;
+                        Console.Write($"{MyArray[i, j]} \t");
+                    }
+                    Console.WriteLine();
+                }
+
+                Console.WriteLine("\n\n\n");
+                float result = 0;
+
+                for (int i = 0; i < MyArray.GetLength(0); i++)
+                {
+                    for (int j = 0; j < MyArray.GetLength(1); j++)
+                    {
+                        result += MyArray[i, j];
+                    }
+                    Console.WriteLine($"{i + 1} строка: " + Math.Round((float)result,2));
+                    result = 0;
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+28. Запишите подряд в массив A(N) элементы заданного массива B(2N),  стоящие на нечетных местах.
+static void Main(string[] args)
+        {
+            int[] MyArrayOld = new int [10];
+
+            int[] MyArrayNew= new int [MyArrayOld.Length/2];
+
+            Random random = new Random();
+
+            int j = 0;
+            Console.WriteLine(" Массив 1 ");
+            for (int i = 0; i < MyArrayOld.Length; i++)
+            {
+                MyArrayOld[i] = random.Next(255);
+                if (i%2==0)
+                {
+                    MyArrayNew[j++] = MyArrayOld[i];
+                }
+                Console.WriteLine($"{i+1} элемент массива= {MyArrayOld[i]}");
+            }
+            Console.WriteLine("\n \t Массив 2 ");
+
+            for (int i = 0; i < MyArrayNew.Length; i++)
+            {
+                Console.WriteLine($"\t{i+1} элемент массива= {MyArrayNew[i]}");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+29. Запишите подряд в массив A(N) элементы заданного массива B(2N), стоящие на чётных местах.
+static void Main(string[] args)
+        {
+            int[] MyArrayOld = new int [10];
+
+            int[] MyArrayNew= new int [MyArrayOld.Length/2];
+
+            Random random = new Random();
+
+            int j = 0;
+            Console.WriteLine(" Массив 1 ");
+            for (int i = 0; i < MyArrayOld.Length; i++)
+            {
+                MyArrayOld[i] = random.Next(255);
+                if (i%2==1)
+                {
+                    MyArrayNew[j++] = MyArrayOld[i];
+                }
+                Console.WriteLine($"{i+1} элемент массива= {MyArrayOld[i]}");
+            }
+            Console.WriteLine("\n \t Массив 2 ");
+
+            for (int i = 0; i < MyArrayNew.Length; i++)
+            {
+                Console.WriteLine($"\t{i+1} элемент массива= {MyArrayNew[i]}");
+            }
+        }
+
+30. Осуществите циклический сдвиг компонент заданного вектора A(N) влево на одну позицию.
+31. Осуществите циклический сдвиг компонент заданного вектора A(N) вправо на одну позицию.
+
+32. С клавиатуры вводится натуральное число. Найти его наибольшую цифру. Например, введено число 764580. Наибольшая цифра в нем 8.
+  
+procedure TForm1.Button1Click(Sender: TObject);
+var a,max:integer;
+begin
+a:= strtoint(edit1.Text);
+max:=0;
+while a>0 do
+begin
+  if a mod 10 > max then
+    begin
+    max:=a mod 10 ;
+    end;
+
+  a:=a div 10;
+
+end;
+
+
+label1.caption := floattostr(max) ;
+end ;   
+
+static void Main(string[] args)
+        {
+            char [] MyArray;
+
+            MyArray =Console.ReadLine().ToCharArray();
+
+            Console.WriteLine(MyArray.Max());
+
+        }
+
+33. Элементы заданного массива B(N) перепишите в новый массив A(N) в обратном порядке.
+  
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  a: array [1..5] of integer;
+  b: array [1..5] of integer;
+  i, j: integer;
+begin
+     Memo1.Lines.Clear;
+     Memo2.Lines.Clear;
+j:=5;
+i:=1 ;
+repeat
+  a[i]:=random(100);
+  Memo1.Lines.Add(floattostr(a[i]));
+  b[j]:=a[i];
+ i:=i+1;
+ j:=j-1;
+until i >5;
+
+for j:=1 to 5 do
+begin
+  Memo2.Lines.Add(floattostr(b[j]))
+end ;
+  end;
+
+
+
+
+
+
+
+
+ static void Main(string[] args)
+        {
+            Random random= new Random();
+            int[] MyArrayOld = new int[10];
+            int[] MyArrayNew = new int[10];
+
+            Console.WriteLine("\t 1 массив");
+            for (int i = 0; i < MyArrayOld.Length; i++)
+            {
+                MyArrayOld[i] = random.Next(100);
+                Console.WriteLine($"{i+1} элемент массива: { MyArrayOld[i]}");
+            }
+            Console.WriteLine('\n');
+            int j = 9;
+
+            Console.WriteLine("\t 2 массив");
+            for (int i = 0; i < MyArrayNew.Length; i++)
+            {
+                MyArrayNew[i] = MyArrayOld[j--];
+                Console.WriteLine($"{i + 1} элемент массива: {MyArrayNew[i]}");
+            }
+        }
